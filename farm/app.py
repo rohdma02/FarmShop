@@ -305,5 +305,9 @@ def increase_quantity(item_id):
     return redirect(url_for("view_cart"))
 
 
-if __name__ == "__main__":
+def start_app():
     app.run(debug=True)
+
+
+if __name__ == "__main__":
+    start_app()
