@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+{% block content %}
+{% set subtotal = session.cart | map(attribute='total_price') | sum %}
+
+<div>
+    <div class="topnav">
+        <a class="active" href="/">Home Page</a>
+        <a class="active" href="/cart">View Cart</a>
+    </div>
+    <div id="content" class="row">
+        <div class="col-md-9">
+            <div class="container-fluid">
+                <div class="pt-2">
+                    <h2 class="mt-3 mb-4">The Best Pork Products in the Midwest</h2>
+                </div>
+                <div class="row">
+                    {% for row in data %}
+                    <div class="col-md-3 mb-4">
+                        <div class="card h-100">
+                            <img src="data:image/png;base64,{{ row[4] }}" class="card-img-top" alt="Product Image">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ row[1] }}</h5>
+                                <p class="card-text">Availability: {{ row[2] }}</p>
+                                <p class="card-text">Price: ${{ '{:,.2f}'.format(row[3]) }}</p>
+                                <form action="{{ url_for('add_to_cart', product_id=row[0]) }}" method="post">
+                                    <button type="submit" class="btn btn-success border-dark">Add to Cart</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="pt-3">
+                <h2>Shopping Cart</h2>
+            </div>
+            <div id="cart-items" class="cart-scroll">
+                {% if session.cart %}
+                {% for item in session.cart %}
+                <div class="card mb-3">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img src="data:image/png;base64,{{ item.image }}" class="img-fluid rounded-start cart-image"
+                                alt="Product Image">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ item.name }}</h5>
+                                <p class="card-text">Item price: ${{ item.price }}</p>
+                                <p class="card-text">Quantity: {{ item.quantity }}</p>
+                                <p class="card-text">Total price: ${{ item.total_price }}</p>
+                                <form action="{{ url_for('remove_cart_client', item_id=item['id']) }}" method="post">
+                                    <label for="quantity">Remove quantity:</label>
+                                    <input type="number" name="quantity" min="1" max="{{ item.quantity }}"
+                                        style="width: 60px;">
+                                    <button type="submit" class="btn btn-danger btn-sm border-dark">Remove</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <div>
+                <h4 class="card-text col-auto pt-3 text">Subtotal: ${{ '{:,.2f}'.format(subtotal) }} + taxes</h4>
+                <a class="btn btn-success border-dark w-100" href="\cart">
+                    See shopping cart
+                </a>
+                <div class="pt-2">
+                    <form action="{{ url_for('remove_all_client') }}" method="post">
+                        <button type="submit" class="btn btn-danger border-dark w-100">Remove
+                            all items</button>
+                    </form>
+                </div>
+            </div>
+            {% else %}
+            <div>
+                <h5>Your shopping cart is <b>empty</b>!</h5>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

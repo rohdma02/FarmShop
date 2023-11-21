@@ -1,0 +1,16 @@
+id,description,availability,price,image
+1,Ribs,10,10,images/ribs.jpg
+2,Chops,10,10,images/chops.jpg
+3,Bacon,15,8,images/bacon_strips.jpg
+4,Sausages,12,7,images/sausages_grill.jpg
+5,Tenderloin,8,15,images/tenderloin_steak.jpg
+6,Pulled Pork,10,12,images/pulled_pork.jpg
+7,Ham,10,9,images/ham_roast.jpg
+8,Pork Belly,10,11,images/pork_belly_slices.jpg
+9,Ground Pork,18,6,images/ground_pork.jpg
+10,Spicy Pork Tacos,5,13,images/spicy_tacos.jpg
+11,Smoked Pork Butt,7,14,images/smoked_pork_butt.jpg
+12,Carnitas,8,12,images/carnitas.jpg
+13,Pork Stir Fry,10,11,images/pork_stir_fry.jpg
+14,Pork and Apple Skewers,6,15,images/pork_apple_skewers.jpg
+15,Honey Glazed Ham,10,16,images/honey_glazed_ham.jpg

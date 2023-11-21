@@ -1,0 +1,74 @@
+#btnSubmit {
+    line-height: 3;
+    border-radius: 0.45rem;
+}
+
+.topnav {
+    overflow: hidden;
+    background-color: whitesmoke;
+}
+
+.topnav a {
+    float: left;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.topnav a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+.topnav a.active {
+    background-color: lightgreen;
+    color: black;
+}
+
+body {
+    background-color: whitesmoke;
+}
+
+#content {
+    background-color: white;
+}
+
+#formC {
+    background-color: white;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.cart-scroll {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.cart-image {
+    height: 100px;
+    object-fit: cover;
+    width: 100%;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+#content {
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.container-fluid {
+    max-width: 100%;
+}
+
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+}
